@@ -1,0 +1,151 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|c:\\alejandro\\visual studio\\c# .net\\frontend aprendeya\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|solutionrelative:views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|c:\\alejandro\\visual studio\\c# .net\\frontend aprendeya\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|c:\\alejandro\\visual studio\\c# .net\\frontend aprendeya\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|c:\\alejandro\\visual studio\\c# .net\\frontend aprendeya\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|c:\\alejandro\\visual studio\\c# .net\\frontend aprendeya\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|solutionrelative:services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|c:\\alejandro\\visual studio\\c# .net\\frontend aprendeya\\models\\usuariosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|solutionrelative:models\\usuariosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|c:\\alejandro\\visual studio\\c# .net\\frontend aprendeya\\models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73910F84-0DEB-C92B-4C27-A5F1111B2380}|Frontend AprendeYa.csproj|solutionrelative:models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T05:49:13.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:47:59.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwCkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:43:46.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "Services\\IAuthService.cs",
+              "ToolTip": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Services\\IAuthService.cs",
+              "RelativeToolTip": "Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:42:59.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UsuarioSesion.cs",
+              "DocumentMoniker": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Models\\UsuarioSesion.cs",
+              "RelativeDocumentMoniker": "Models\\UsuarioSesion.cs",
+              "ToolTip": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Models\\UsuarioSesion.cs",
+              "RelativeToolTip": "Models\\UsuarioSesion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:42:27.278Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Models\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "Models\\LoginRequest.cs",
+              "ToolTip": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Models\\LoginRequest.cs",
+              "RelativeToolTip": "Models\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:42:13.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwCwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:32:18.98Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 206,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
