@@ -1,0 +1,61 @@
+﻿@model Frontend_AprendeYa.Models.Curso
+
+@{
+    ViewData["Title"] = Model.Titulo;
+}
+
+<div class="container mt-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index">Catálogo</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Titulo</li>
+        </ol>
+    </nav>
+
+    <div class="row mt-4">
+        <div class="col-lg-8">
+            <img src="@Model.ImagenUrl" class="img-fluid rounded shadow-sm mb-4" alt="@Model.Titulo" style="width: 100%; max-height: 450px; object-fit: cover;">
+
+            <h1 class="display-5 fw-bold">@Model.Titulo</h1>
+            <hr />
+
+            <h3>Acerca de este curso</h3>
+            <p class="lead text-muted" style="text-align: justify;">
+                @Model.Descripcion
+            </p>
+
+            <div class="mt-5">
+                <h4>Lo que aprenderás</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Dominio de las herramientas principales del nivel @Model.IdNivel.</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Proyectos prácticos aplicados a la categoría @Model.IdCategoria.</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Acceso de por vida al contenido.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow border-0 sticky-top" style="top: 20px;">
+                <div class="card-body p-4 text-center">
+                    <h2 class="text-primary fw-bold mb-3">S/ @Model.Precio</h2>
+
+                    <button class="btn btn-primary btn-lg w-100 mb-3 shadow-sm">
+                        <i class="fas fa-shopping-cart"></i> Comprar ahora
+                    </button>
+
+                    <p class="small text-muted mb-4">Garantía de satisfacción de 7 días</p>
+
+                    <div class="text-start border-top pt-3">
+                        <p><i class="fas fa-signal me-2 text-secondary"></i> <strong>Nivel:</strong> @Model.IdNivel</p>
+                        <p><i class="fas fa-user-tie me-2 text-secondary"></i> <strong>Instructor ID:</strong> @Model.IdInstructor</p>
+                        <p><i class="fas fa-tag me-2 text-secondary"></i> <strong>Categoría ID:</strong> @Model.IdCategoria</p>
+                    </div>
+
+                    <a asp-action="Index" class="btn btn-outline-secondary w-100 mt-3">
+                        <i class="fas fa-arrow-left"></i> Volver al catálogo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
