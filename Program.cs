@@ -21,6 +21,15 @@ builder.Services.AddHttpClient<IAuthService, AuthService>(client =>
     client.BaseAddress = new Uri("https://localhost:7061/");
 });
 
+//Soporte para acceder a la sesión desde los Services
+builder.Services.AddHttpContextAccessor();
+
+//Registrar el CursoService con la URL de tu API
+builder.Services.AddHttpClient<CursoService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7061/");
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -43,3 +52,4 @@ app.MapControllerRoute(
     pattern: "{controller=Auth}/{action=Login}/{id?}"); // <-- Hacemos que el Login sea la primera pantalla en abrir
 
 app.Run();
+

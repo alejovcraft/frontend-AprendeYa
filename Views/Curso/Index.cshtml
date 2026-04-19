@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Frontend_AprendeYa.Models.Curso>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Explora nuestros cursos</h2>
+    <div class="row">
+        @foreach (var item in Model) {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="@item.ImagenUrl" class="card-img-top" alt="@item.Titulo" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">@item.Titulo</h5>
+                        <p class="card-text text-muted">@item.Descripcion.Substring(0, Math.Min(item.Descripcion.Length, 100))...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-primary font-weight-bold">S/ @item.Precio</span>
+                            <a asp-action="Detalle" asp-route-id="@item.IdCurso" class="btn btn-outline-primary btn-sm">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

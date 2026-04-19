@@ -15,49 +15,67 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.TargetFrameworkIdentifier = .NETCoreApp
-build_property.TargetFrameworkVersion = v8.0
 build_property.RootNamespace = Frontend_AprendeYa
 build_property.RootNamespace = Frontend_AprendeYa
-build_property.ProjectDir = C:\alejandro\Visual studio\C# .net\Frontend AprendeYa\
+build_property.ProjectDir = H:\Cibertec\DSW01\ProyectoGrupo\frontend-AprendeYa\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\alejandro\Visual studio\C# .net\Frontend AprendeYa
+build_property.MSBuildProjectDirectory = H:\Cibertec\DSW01\ProyectoGrupo\frontend-AprendeYa
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/alejandro/Visual studio/C\# .net/Frontend AprendeYa/Views/Auth/Login.cshtml]
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/alejandro/Visual studio/C\# .net/Frontend AprendeYa/Views/Home/Index.cshtml]
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Curso/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29cQ3JlYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Curso/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29cRGV0YWxsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Curso/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29cRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Curso/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Curso/Mantenimiento.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3Vyc29cTWFudGVuaW1pZW50by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/alejandro/Visual studio/C\# .net/Frontend AprendeYa/Views/Home/Privacy.cshtml]
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/alejandro/Visual studio/C\# .net/Frontend AprendeYa/Views/Shared/Error.cshtml]
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/alejandro/Visual studio/C\# .net/Frontend AprendeYa/Views/Shared/_ValidationScriptsPartial.cshtml]
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/alejandro/Visual studio/C\# .net/Frontend AprendeYa/Views/_ViewImports.cshtml]
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/alejandro/Visual studio/C\# .net/Frontend AprendeYa/Views/_ViewStart.cshtml]
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/alejandro/Visual studio/C\# .net/Frontend AprendeYa/Views/Shared/_Layout.cshtml]
+[H:/Cibertec/DSW01/ProyectoGrupo/frontend-AprendeYa/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-otxtifjb3g
