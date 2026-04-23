@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Frontend AprendeYa.csproj": {}
+    "H:\\Cibertec\\DSW01\\ProyectoGrupo\\frontend-AprendeYa\\Frontend AprendeYa.csproj": {}
   },
   "projects": {
-    "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Frontend AprendeYa.csproj": {
+    "H:\\Cibertec\\DSW01\\ProyectoGrupo\\frontend-AprendeYa\\Frontend AprendeYa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Frontend AprendeYa.csproj",
+        "projectUniqueName": "H:\\Cibertec\\DSW01\\ProyectoGrupo\\frontend-AprendeYa\\Frontend AprendeYa.csproj",
         "projectName": "Frontend AprendeYa",
-        "projectPath": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\Frontend AprendeYa.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\alejandro\\Visual studio\\C# .net\\Frontend AprendeYa\\obj\\",
+        "projectPath": "H:\\Cibertec\\DSW01\\ProyectoGrupo\\frontend-AprendeYa\\Frontend AprendeYa.csproj",
+        "packagesPath": "C:\\Users\\Ronald\\.nuget\\packages\\",
+        "outputPath": "H:\\Cibertec\\DSW01\\ProyectoGrupo\\frontend-AprendeYa\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ronald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,12 +26,10 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
-            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -46,13 +44,16 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.23, )"
@@ -77,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
