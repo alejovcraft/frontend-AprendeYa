@@ -1,0 +1,93 @@
+﻿@model List<Frontend_AprendeYa.Models.ReporteVenta>
+
+@{
+    ViewData["Title"] = "Reporte de Ventas";
+}
+
+<!-- ESTA ES LA MAGIA PARA LA IMPRESORA -->
+<!-- ESTA ES LA MAGIA PARA LA IMPRESORA -->
+<style>
+    @@media print {
+        /* Ocultamos todo lo que NO queremos que salga en el papel */
+        header, footer, .btn-outline-success, nav {
+            display: none !important;
+        }
+        /* Le quitamos las sombras y bordes a la tarjeta para que gaste menos tinta y se vea plano */
+        .card {
+            border: none !important;
+            box-shadow: none !important;
+        }
+        /* Ajustamos la página para que use todo el espacio en blanco */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        /* Forzamos a que los colores de fondo (como los badges verde y amarillo) se impriman */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary"><i class="fas fa-chart-line"></i> Reporte Global de Ventas</h2>
+        <button class="btn btn-outline-success" onclick="window.print()">
+            <i class="fas fa-print"></i> Imprimir Reporte
+        </button>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle fa-2x mb-2"></i>
+                    <p class="mb-0">Aún no hay ventas registradas en el sistema.</p>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID Venta</th>
+                                <th>Fecha</th>
+                                <th>Usuario</th>
+                                <th>Alumno (Nombres)</th>
+                                <th>Estado</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var v in Model)
+                            {
+                                <tr>
+                                    <td><span class="badge bg-light text-dark border">#@v.IdVenta</span></td>
+                                    <td>@v.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td><strong class="text-secondary">@v.Usuario</strong></td>
+                                    <td>@v.Alumno</td>
+                                    <td>
+                                        <span class="badge @(v.Estado == "Completado" ? "bg-success" : "bg-warning text-dark")">
+                                            @v.Estado
+                                        </span>
+                                    </td>
+                                    <td class="text-end fw-bold text-success">S/ @v.Total</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot class="table-light">
+                            <tr>
+                                <td colspan="5" class="text-end fw-bold fs-5 text-dark">Ingresos Totales:</td>
+                                <td class="text-end fw-bold fs-4 text-primary">S/ @Model.Sum(x => x.Total)</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

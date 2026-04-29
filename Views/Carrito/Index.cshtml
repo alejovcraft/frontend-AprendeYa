@@ -1,0 +1,79 @@
+﻿@model Frontend_AprendeYa.Models.CarritoCompras
+
+@{
+    ViewData["Title"] = "Mi Carrito de Compras";
+}
+
+<div class="container mt-5">
+    <h2 class="fw-bold text-primary mb-4"><i class="fas fa-shopping-cart"></i> Carrito de Compras</h2>
+
+    @if (Model == null || !Model.Items.Any())
+    {
+        <div class="alert alert-info text-center shadow-sm p-5 border-0">
+            <i class="fas fa-box-open fa-3x text-info mb-3"></i>
+            <h4>Tu carrito está vacío</h4>
+            <p class="text-muted">Sigue explorando nuestro catálogo y encuentra el curso ideal para ti.</p>
+            <a asp-controller="Curso" asp-action="Index" class="btn btn-primary mt-3 px-4">Ir al Catálogo</a>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <!-- COLUMNA IZQUIERDA: LISTA DE CURSOS -->
+            <div class="col-lg-8">
+                <p class="text-muted fw-bold">@Model.Items.Count curso(s) en tu carrito</p>
+                <hr />
+
+                @foreach (var item in Model.Items)
+                {
+                    <div class="card shadow-sm border-0 mb-3 overflow-hidden">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-3">
+                                <img src="@(string.IsNullOrEmpty(item.ImagenUrl) ? "https://via.placeholder.com/300x200?text=Curso" : item.ImagenUrl)"
+                                     class="img-fluid" alt="@item.Titulo" style="height: 120px; width: 100%; object-fit: cover;">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body py-2">
+                                    <h5 class="card-title fw-bold mb-1">@item.Titulo</h5>
+                                    <p class="card-text text-muted small mb-0"><i class="fas fa-hashtag"></i> ID del Curso: @item.IdCurso</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-end pe-4">
+                                <h4 class="text-primary fw-bold mb-2">S/ @item.Precio</h4>
+                                <!-- Luego le damos vida a este botón de eliminar -->
+                                <!-- Reemplaza tu botón de eliminar por este formulario -->
+                                <form asp-controller="Carrito" asp-action="Eliminar" method="post" class="d-inline">
+                                    <input type="hidden" name="idDetalle" value="@item.IdDetalle" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger shadow-sm">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- COLUMNA DERECHA: RESUMEN DE COMPRA -->
+            <div class="col-lg-4">
+                <div class="card shadow border-0 bg-light sticky-top" style="top: 20px;">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="fw-bold mb-3">Total a Pagar</h4>
+                        <h1 class="text-primary fw-bold display-5 mb-4">S/ @Model.Total</h1>
+                        
+                        <p class="text-muted small mb-4 text-start">
+                            Al completar tu compra, aceptas nuestras Condiciones de uso y nuestro Aviso de privacidad.
+                        </p>
+
+                        <!-- Formulario para el botón Pagar -->
+                        <form asp-controller="Carrito" asp-action="Pagar" method="post">
+                            <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm">
+                                <i class="fas fa-credit-card"></i> Pagar Ahora
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
