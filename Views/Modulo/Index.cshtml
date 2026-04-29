@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Frontend_AprendeYa.Models.Modulo>
+
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Curso" asp-action="Mantenimiento">Cursos</a></li>
+            <li class="breadcrumb-item active">Módulos de @ViewBag.CursoNombre</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Módulos: <span class="text-primary">@ViewBag.CursoNombre</span></h2>
+        <a asp-action="Crear" asp-route-idCurso="@ViewBag.IdCurso" class="btn btn-success">
+            <i class="fas fa-plus"></i> Nuevo Módulo
+        </a>
+    </div>
+
+
+
+    <div class="card shadow-sm border-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Orden</th>
+                    <th>Nombre del Módulo</th>
+                    <th>Descripción</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(m => m.Orden))
+                {
+                    <tr>
+                        <td><span class="badge bg-secondary"># @item.Orden</span></td>
+                        <td class="fw-bold">@item.Titulo</td>
+                        <td>@item.Descripcion</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a asp-action="Editar" asp-route-id="@item.IdModulo" class="btn btn-sm btn-outline-warning">Editar</a>
+                                <a asp-controller="Tema" asp-action="Index" asp-route-idModulo="@item.IdModulo" class="btn btn-sm btn-outline-info">
+                                    Ver Temas
+                                </a>
+                                <a asp-action="Eliminar" asp-route-id="@item.IdModulo" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
