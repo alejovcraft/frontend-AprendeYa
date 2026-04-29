@@ -1,0 +1,14 @@
+﻿@model Frontend_AprendeYa.Models.Modulo
+
+<div class="alert alert-danger">
+    <h3>¿Estás seguro de eliminar este módulo?</h3>
+    <p>Módulo: <strong>@Model.Titulo</strong></p>
+
+    <form asp-action="Eliminar">
+        <input type="hidden" name="idModulo" value="@Model.IdModulo" />
+        <input type="hidden" name="idCurso" value="@Model.IdCurso" />
+
+        <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+        <a asp-action="Index" asp-route-idCurso="@Model.IdCurso" class="btn btn-secondary">Volver</a>
+    </form>
+</div>

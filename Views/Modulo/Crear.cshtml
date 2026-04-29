@@ -1,0 +1,63 @@
+﻿@model Frontend_AprendeYa.Models.Modulo
+
+@{
+    ViewData["Title"] = "Nuevo Módulo";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-layer-group"></i> Añadir Módulo</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Crear">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        @* --- CAMPO OCULTO --- *@
+                        <input type="hidden" asp-for="IdCurso" />
+                        <input type="hidden" asp-for="IdModulo" value="0" />
+
+
+                        <div class="mb-3">
+                            <label asp-for="Titulo" class="form-label fw-bold">Nombre del Módulo</label>
+                            <input asp-for="Titulo" class="form-control" />
+                            <span asp-validation-for="Titulo" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Descripcion" class="form-label fw-bold">Descripción</label>
+                            <textarea asp-for="Descripcion" class="form-control" rows="2"></textarea>
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Orden" class="form-label fw-bold">N° de Orden</label>
+                                <input asp-for="Orden" class="form-control" type="number" min="1" />
+                                <span asp-validation-for="Orden" class="text-danger"></span>
+                            </div>      
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" asp-route-idCurso="@Model.IdCurso" class="btn btn-outline-secondary">
+                                Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save"></i> Crear Módulo
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

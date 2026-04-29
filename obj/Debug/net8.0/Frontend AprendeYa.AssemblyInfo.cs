@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Frontend AprendeYa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e0c4bdc735e6493ded831b430b98759085ed5d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d9a2bfeaa8dd4aa95945614e23a3c44839c0319")]
 [assembly: System.Reflection.AssemblyProductAttribute("Frontend AprendeYa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Frontend AprendeYa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
