@@ -1,0 +1,327 @@
+﻿@model List<Frontend_AprendeYa.Models.UsuarioAdmin>
+
+@{
+    ViewData["Title"] = "Gestión de Usuarios";
+}
+
+<div class="container mt-4">
+    
+    <!-- ============================================== -->
+    <!-- ALERTAS DE ÉXITO O ERROR -->
+    <!-- ============================================== -->
+    @if (TempData["MensajeExito"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["MensajeExito"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["MensajeError"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["MensajeError"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- ============================================== -->
+    <!-- CABECERA Y BOTÓN NUEVO -->
+    <!-- ============================================== -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary"><i class="fas fa-users-cog"></i> Gestión de Usuarios</h2>
+        <button class="btn btn-primary shadow-sm" onclick="abrirModal(0, '', '', '', '', '', '', 2, true, 0)">
+            <i class="fas fa-plus"></i> Nuevo Usuario
+        </button>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TABLA PRINCIPAL -->
+    <!-- ============================================== -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombres Completos</th>
+                            <th>Usuario (Login)</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var u in Model)
+                        {
+                            <tr>
+                                <td><span class="badge bg-light text-dark border">@u.IdUsuario</span></td>
+                                <td class="text-start">
+                                    @if (string.IsNullOrEmpty(u.Nombres))
+                                    {
+                                        <span class="badge bg-secondary"><i class="fas fa-ghost"></i> Fantasma</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fw-bold text-dark">@u.Nombres @u.Apellidos</span>
+                                        <br /><small class="text-muted"><i class="fas fa-envelope"></i> @u.Correo</small>
+                                    }
+                                </td>
+                                <td><span class="fw-semibold text-secondary">@u.Username</span></td>
+                                <td>
+                                    @if (u.IdRol == 1)
+                                    {
+                                        <span class="badge bg-danger shadow-sm">Admin</span>
+                                    }
+                                    else if (u.IdRol == 2)
+                                    {
+                                        <span class="badge bg-info shadow-sm text-dark">Alumno</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success shadow-sm">Profesor</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (u.Estado)
+                                    {
+                                        <span class="badge bg-primary">Activo</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning text-dark">Inactivo</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-1">
+                                        <!-- Botón Matricular (Solo visible para Alumnos - Rol 2) -->
+                                        @if (u.IdRol == 2)
+                                        {
+                                            <!-- AQUÍ QUITAMOS LA LLAVE CONFLICTIVA Y USAMOS EL SIGNO + -->
+                                            <button class="btn btn-sm btn-outline-success" title="Asignar Curso (Beca)"
+                                                    onclick="abrirModalMatricula(@u.IdUsuario, '@(string.IsNullOrEmpty(u.Nombres) ? "Usuario Fantasma" : u.Nombres + " " + u.Apellidos)')">
+                                                <i class="fas fa-graduation-cap"></i>
+                                            </button>
+                                        }
+
+                                        <!-- Botón Editar -->
+                                        <button class="btn btn-sm btn-outline-primary" title="Editar Usuario"
+                                                onclick="abrirModal(@u.IdUsuario, '@u.Nombres', '@u.Apellidos', '@u.Correo', '@u.Telefono', '@u.Username', '@u.ContrasenaLiteral', @u.IdRol, @(u.Estado ? "true" : "false"), @(u.IdPersona ?? 0))">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        
+                                        <!-- Formulario Eliminar -->
+                                        <form asp-action="Eliminar" asp-controller="Usuario" method="post" class="d-inline">
+                                            <input type="hidden" name="idUsuario" value="@u.IdUsuario" />
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Desactivar Usuario"
+                                                    onclick="return confirm('¿Estás seguro de desactivar este usuario?');">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================== -->
+<!-- MODAL 1: CREAR / EDITAR USUARIOS -->
+<!-- ============================================== -->
+<div class="modal fade" id="modalUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="modalTitulo"><i class="fas fa-user-edit"></i> Datos del Usuario</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            
+            <form asp-action="Guardar" asp-controller="Usuario" method="post">
+                <div class="modal-body bg-light">
+                    <!-- Campos Ocultos -->
+                    <input type="hidden" id="txtIdUsuario" name="IdUsuario" value="0" />
+                    <input type="hidden" id="txtIdPersona" name="IdPersona" value="0" />
+                    
+                    <div class="row g-3">
+                        <!-- COLUMNA IZQUIERDA: DATOS DE PERSONA -->
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="text-primary mb-3"><i class="fas fa-id-card"></i> Datos Personales</h6>
+                                    <p class="text-muted small mb-3">Opcional. Déjalo en blanco para crear un "Usuario Fantasma".</p>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold">Nombres</label>
+                                        <input type="text" class="form-control" id="txtNombres" name="Nombres">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold">Apellidos</label>
+                                        <input type="text" class="form-control" id="txtApellidos" name="Apellidos">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="txtCorreo" name="Correo">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold">Teléfono</label>
+                                        <input type="text" class="form-control" id="txtTelefono" name="Telefono">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COLUMNA DERECHA: DATOS DE SISTEMA -->
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="text-primary mb-3"><i class="fas fa-laptop-code"></i> Credenciales</h6>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold">Nombre de Usuario *</label>
+                                        <input type="text" class="form-control border-primary" id="txtUsername" name="Username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold">Contraseña *</label>
+                                        <input type="text" class="form-control border-primary" id="txtContrasena" name="ContrasenaLiteral" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold">Rol del Sistema *</label>
+                                        <select class="form-select border-primary" id="cboRol" name="IdRol" required>
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Alumno</option>
+                                            <option value="3">Profesor</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-check form-switch mt-4 bg-light p-3 rounded">
+                                        <input class="form-check-input ms-0 me-2" type="checkbox" id="chkEstado" name="Estado" value="true" checked>
+                                        <label class="form-check-label fw-bold text-primary" for="chkEstado">Usuario Activo</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Usuario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================== -->
+<!-- MODAL 2: MATRICULAR ALUMNO -->
+<!-- ============================================== -->
+<div class="modal fade" id="modalMatricula" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title"><i class="fas fa-graduation-cap"></i> Asignar Curso a Alumno</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            
+            <form asp-action="Matricular" asp-controller="Usuario" method="post">
+                <div class="modal-body p-4">
+                    <input type="hidden" id="txtMatriculaIdUsuario" name="idUsuario" />
+                    
+                    <div class="alert alert-light border-success border-start border-4 shadow-sm mb-4">
+                        <p class="mb-1 text-muted small">Alumno seleccionado:</p>
+                        <strong id="lblNombreAlumno" class="text-success fs-5"></strong>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-secondary"><i class="fas fa-book"></i> Selecciona el Curso a asignar:</label>
+                        <select class="form-select form-select-lg border-success shadow-sm" id="cboCursoAsignar" name="idCurso" required>
+                            <option value="">-- Cargando cursos desde el servidor... --</option>
+                        </select>
+                        <div class="form-text mt-2"><i class="fas fa-info-circle"></i> Al confirmar, el alumno será matriculado con beca completa (Costo $0.00).</div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Confirmar Matrícula</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // -------------------------------------------------------------
+        // FUNCIÓN 1: ABRIR MODAL DE CREAR / EDITAR USUARIO
+        // -------------------------------------------------------------
+        function abrirModal(idUsuario, nombres, apellidos, correo, telefono, username, contrasena, idRol, estado, idPersona) {
+            
+            document.getElementById('txtIdUsuario').value = idUsuario;
+            document.getElementById('txtIdPersona').value = idPersona === 0 ? '' : idPersona;
+            
+            document.getElementById('txtNombres').value = nombres || '';
+            document.getElementById('txtApellidos').value = apellidos || '';
+            document.getElementById('txtCorreo').value = correo || '';
+            document.getElementById('txtTelefono').value = telefono || '';
+            
+            document.getElementById('txtUsername').value = username || '';
+            document.getElementById('txtContrasena').value = contrasena || '';
+            document.getElementById('cboRol').value = idRol;
+            
+            document.getElementById('chkEstado').checked = estado;
+
+            if (idUsuario === 0) {
+                document.getElementById('modalTitulo').innerHTML = '<i class="fas fa-user-plus"></i> Nuevo Usuario';
+            } else {
+                document.getElementById('modalTitulo').innerHTML = '<i class="fas fa-user-edit"></i> Editar Usuario';
+            }
+
+            var myModal = new bootstrap.Modal(document.getElementById('modalUsuario'));
+            myModal.show();
+        }
+
+        // -------------------------------------------------------------
+        // FUNCIÓN 2: ABRIR MODAL DE MATRÍCULA (BECA)
+        // -------------------------------------------------------------
+        function abrirModalMatricula(idUsuario, nombreCompleto) {
+            
+            document.getElementById('txtMatriculaIdUsuario').value = idUsuario;
+            document.getElementById('lblNombreAlumno').innerText = nombreCompleto;
+            
+            var myModal = new bootstrap.Modal(document.getElementById('modalMatricula'));
+            myModal.show();
+        }
+
+        // -------------------------------------------------------------
+        // FUNCIÓN 3: CARGAR LOS CURSOS DINÁMICAMENTE PARA EL SELECT
+        // -------------------------------------------------------------
+        async function cargarCursosParaMatricula() {
+            try {
+                // Ajusta la URL de acuerdo al puerto donde corre tu Backend
+                const response = await fetch('https://localhost:7061/api/Curso');
+                
+                if (response.ok) {
+                    const cursos = await response.json();
+                    const cbo = document.getElementById('cboCursoAsignar');
+                    
+                    cbo.innerHTML = '<option value="">-- Selecciona un curso de la lista --</option>';
+                    
+                    // AQUÍ QUITAMOS LAS LLAVES CONFLICTIVAS DE JAVASCRIPT Y USAMOS EL SIGNO +
+                    cursos.forEach(c => {
+                        cbo.innerHTML += '<option value="' + c.idCurso + '">[ID: ' + c.idCurso + '] - ' + c.titulo + '</option>';
+                    });
+                }
+            } catch (error) {
+                console.error("Error al cargar los cursos:", error);
+                document.getElementById('cboCursoAsignar').innerHTML = '<option value="">⚠️ Error al cargar los cursos. Revisa la API.</option>';
+            }
+        }
+
+        // Ejecutar al cargar la página
+        document.addEventListener("DOMContentLoaded", function() {
+            cargarCursosParaMatricula();
+        });
+    </script>
+}

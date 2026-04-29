@@ -1,0 +1,51 @@
+﻿@model List<Frontend_AprendeYa.Models.CursoMatriculado>
+
+@{
+    ViewData["Title"] = "Mis Cursos";
+}
+
+<div class="container mt-4">
+    <div class="d-flex align-items-center mb-4">
+        <h2 class="fw-bold text-primary"><i class="fas fa-book-open"></i> Mi Aprendizaje</h2>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info text-center shadow-sm p-5">
+            <i class="fas fa-sad-tear fa-3x text-info mb-3"></i>
+            <h4>Aún no estás matriculado en ningún curso</h4>
+            <p>Explora nuestro catálogo y empieza tu viaje de aprendizaje hoy mismo.</p>
+            <a asp-controller="Curso" asp-action="Index" class="btn btn-primary mt-2">Ir al Catálogo</a>
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var curso in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+                        <!-- Imagen por defecto si la URL viene nula -->
+                        <img src="@(string.IsNullOrEmpty(curso.ImagenUrl) ? "https://via.placeholder.com/600x300?text=Curso+AprendeYa" : curso.ImagenUrl)"
+                             class="card-img-top" alt="@curso.Titulo" style="height: 180px; object-fit: cover;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-dark mb-2">@curso.Titulo</h5>
+                            <p class="card-text text-muted small" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                @curso.Descripcion
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0 pt-0 pb-3">
+                            <p class="text-secondary small mb-3">
+                                <i class="fas fa-calendar-check"></i> Adquirido: @curso.FechaAdquisicion.ToString("dd MMM yyyy")
+                            </p>
+                            <button class="btn btn-success w-100 fw-bold">
+                                <i class="fas fa-play-circle"></i> Continuar Aprendiendo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

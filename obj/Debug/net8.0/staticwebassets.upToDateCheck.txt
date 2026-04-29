@@ -1,5 +1,10 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\Img\codigolagarto.txt
+wwwroot\Img\FondoIngreo_Registro.png
+wwwroot\Img\loginbaner.png
+wwwroot\Img\registrabaner.png
+wwwroot\Img\registrarbaner.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map

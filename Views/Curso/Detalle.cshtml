@@ -5,6 +5,25 @@
 }
 
 <div class="container mt-5">
+    
+    <!-- ============================================== -->
+    <!-- ZONA DE ALERTAS (Éxito o Error al agregar al carrito) -->
+    <!-- ============================================== -->
+    @if (TempData["MensajeExito"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["MensajeExito"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["MensajeError"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show shadow-sm" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["MensajeError"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-action="Index">Catálogo</a></li>
@@ -13,6 +32,7 @@
     </nav>
 
     <div class="row mt-4">
+        <!-- COLUMNA IZQUIERDA: Info del curso -->
         <div class="col-lg-8">
             <img src="@Model.ImagenUrl" class="img-fluid rounded shadow-sm mb-4" alt="@Model.Titulo" style="width: 100%; max-height: 450px; object-fit: cover;">
 
@@ -34,14 +54,21 @@
             </div>
         </div>
 
+        <!-- COLUMNA DERECHA: Tarjeta de compra -->
         <div class="col-lg-4">
             <div class="card shadow border-0 sticky-top" style="top: 20px;">
                 <div class="card-body p-4 text-center">
                     <h2 class="text-primary fw-bold mb-3">S/ @Model.Precio</h2>
 
-                    <button class="btn btn-primary btn-lg w-100 mb-3 shadow-sm">
-                        <i class="fas fa-shopping-cart"></i> Comprar ahora
-                    </button>
+                    <!-- AQUÍ ENTRA LA MAGIA DEL CARRITO -->
+                    <form asp-controller="Carrito" asp-action="Agregar" method="post" class="mb-3">
+                        <input type="hidden" name="idCurso" value="@Model.IdCurso" />
+                        <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                        
+                        <button type="submit" class="btn btn-primary btn-lg w-100 shadow-sm">
+                            <i class="fas fa-shopping-cart"></i> Comprar ahora
+                        </button>
+                    </form>
 
                     <p class="small text-muted mb-4">Garantía de satisfacción de 7 días</p>
 

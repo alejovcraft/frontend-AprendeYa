@@ -16,27 +16,43 @@ namespace Frontend_AprendeYa.Services
 
         public async Task<UsuarioSesion> LoginAsync(LoginRequest request)
         {
-            // 1. Convertimos los datos del login a JSON
             var json = JsonSerializer.Serialize(request);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            // 2. Hacemos el POST a la URL de tu API
-            var response = await _httpClient.PostAsync("api/Auth/login", content);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                // 3. Si es exitoso (200 OK), leemos el JSON de respuesta y extraemos el Token
-                var responseString = await response.Content.ReadAsStringAsync();
+                // Hacemos la petición al backend
+                var response = await _httpClient.PostAsync("api/Auth/login", content);
 
-                // Usamos esta opción para que ignore mayúsculas/minúsculas al leer el JSON
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                var usuario = JsonSerializer.Deserialize<UsuarioSesion>(responseString, options);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
 
-                return usuario;
+                    // ESTO ES LA MAGIA: Le dice a C# que ignore las mayúsculas y minúsculas al leer el JSON de Postman
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    var usuario = JsonSerializer.Deserialize<UsuarioSesion>(jsonString, options);
+
+                    return usuario;
+                }
+
+                return null;
             }
+            catch (Exception ex)
+            {
+                // Si el frontend no logra alcanzar al backend (ej. API apagada), caerá aquí
+                Console.WriteLine("Error conectando a la API: " + ex.Message);
+                return null;
+            }
+        }
 
-            // Si falla (Ej. 401 Unauthorized), devolvemos nulo
-            return null;
+        public async Task<bool> RegistrarAsync(RegistroRequest request)
+        {
+            var json = System.Text.Json.JsonSerializer.Serialize(request);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("api/Auth/registro", content);
+
+            return response.IsSuccessStatusCode;
         }
     }
 }
