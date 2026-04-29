@@ -30,6 +30,12 @@ builder.Services.AddHttpClient<CursoService>(client =>
     client.BaseAddress = new Uri("https://localhost:7061/");
 });
 
+builder.Services.AddHttpClient<ModuloService>(client => 
+{
+    client.BaseAddress = new Uri("https://localhost:7061/"); 
+});
+
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
